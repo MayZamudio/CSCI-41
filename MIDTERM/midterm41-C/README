@@ -1,0 +1,37 @@
+This program will read a series of integers and letters from the standard
+input in any order. It will then put them into a set and a vector,
+respectively. I.e. all integers read will go into the set, and all characters
+read will go into the vector.
+
+It will then output the set (in sorted order, automatically, since it's a
+sorted set), and then the vector in the order the characters were entered. It
+then sorts the vector, and outputs the vector in sorted order one final time.
+
+You need to fix the compile time bug which prevents it from compiling, and the
+logic bug which prevents it from working properly (test the code! You'll see
+that it's not working as described above).
+
+Don't worry about negative numbers.
+
+Sample Run:
+Please enter letters or numbers to add to our data structures. (0 to quit):
+9 G 20 A 16 C Z R Q 1 0
+The set contains:
+1
+9
+16
+20
+The vector contains:
+G
+A
+C
+Z
+R
+Q
+The sorted vector contains:
+A
+C
+G
+Q
+R
+Z

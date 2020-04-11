@@ -1,0 +1,116 @@
+=====================================================
+ ____  _        _    ____ _  __   _   _    ____ _  __
+| __ )| |      / \  / ___| |/ /  | | / \  / ___| |/ /
+|  _ \| |     / _ \| |   | ' /_  | |/ _ \| |   | ' / 
+| |_) | |___ / ___ \ |___| . \ |_| / ___ \ |___| . \ 
+|____/|_____/_/   \_\____|_|\_\___/_/   \_\____|_|\_\
+                                                     
+=====================================================
+
+This is an open-ended partnered assignment. All of your classes must implement
+proper class design - a private section with the member variables and public
+methods including getters, setters, constructors and any publicly needed
+methods in the public section. Document your code.
+
+You will need to make a game of blackjack for a standard deck of 52 cards, for
+one or more players playing against a house dealer. The goal for the players
+is to get as close to 21 as possible without going over. You can read the
+rules here if you've never played Blackjack before:
+https://bicyclecards.com/how-to-play/blackjack/
+
+You must implement the following five items. Each item you implement is a
+letter grade. Extra credit is available for doing extra cool stuff (which is
+entirely subjective and arbitrary).
+
+1) Make a card class that holds a suit and a face. These must be private
+variables. Provide a constructor that allows setting the suit and the face,
+and provide getters for getting the suit and face. Don't make setters for
+them, as it doesn't make sense to change a card after it is made. Your code
+should terminate the program if an invalid suit or face is attempted to be
+set (for example, if they tried setting a face value below an ace or above a
+king).
+
+Valid face values for a standard deck of cards are:
+Ace 2 3 4 5 6 7 8 9 10 Jack Queen King
+
+Valid suits for a standard deck of cards are:
+Clubs Diamonds Hearts Spades
+
+The card class needs a way to print itself to the screen, either using an
+overloaded operator<< function, or a .print() method.
+
+2) Make a deck class that holds the deck of cards that the dealer will be
+dealing from. It should support a shuffle() method that will refill the deck up
+to 52 cards, and shuffle them randomly. Shuffle() should take an optional
+ranodm seed that will be used to seed the random number generator using
+srand(). The deck class also needs to support a deal() method that will deal
+the top card from the deck.
+
+3) Make a hand class that holds the set of cards one player (or the dealer)
+has. It should have a function called total() that returns the current maximum
+point value for the current hand, taking into account that aces can be either
+1s or 11s depending on which is more beneficial. Most cards are worth points
+equal to their face value (i.e. a 5 is worth 5 points) but face cards (Jack,
+Queen, King) are all worth 10 points. Make a busted() function that returns
+true if the total is over 21, and false otherwise. Remember that if you have
+an ace you are not busted if you can treat it like a 1 and not bust.
+
+4) In main(), write a program that will implement the rules of blackjack. Start
+by asking how many people are playing, and giving $100 to each player.
+
+Then you will play multiple hands of blackjack until a player decides to quit,
+or all players are bankrupt, or one player exceeds $1000 (bringing down the
+house).
+
+Each hand of blackjack will work like this:
+A) Shuffle the deck and ask each player how much money (up to their total
+amount, with a minimum of $5) they wish to wager.
+B) Deal 2 cards from the deck to each player and the dealer
+C) Print the cards visible on the table (all of the players' cards and one of
+the two cards the dealer has)
+D) Starting with player 1 and continuing around the table...
+	i) Ask the player if they want to hit or stand. 
+	ii) If they hit, deal them another card. If they exceed 21, they bust and
+	lose
+	iii) If they stand, their total is saved, and the game moves on to the
+	next player.
+	iv) If all players are done, then the dealer will go (see section 5
+	below).
+E) Once the players and dealer have gone, award or take away money from each
+player according to the following rules:
+	i) If the player blackjacked (drew a natural 21 on the first two cards)
+	award them 1.5 times their bet. If the dealer blackjacked, take all of the
+	players' bets. If both occur, they push (no money gained or lost for that
+	player).
+	ii) If a player went bust (over 21) then they lose the amount they
+	wagered. If the dealer went bust, all of the players win the amount they
+	wagered. If both a player and the dealer goes bust, the player LOSES.
+	iii) The scores of each player and the dealer are compared. If the dealer
+	is higher, the player loses the amount they wagered. If the player is
+	higher, they win the amount they wagered. If there is a tie, then no money
+	is exchanged.
+F) You do not need to implement insurance, splitting, or doubling down, but
+yoiu can do so for extra credit.
+G) When a player is out of money (below $5), eliminate them from the game. 
+H) If any player exceeds $1000 they win the game, and the game quits.
+
+5) You need to implement an AI for the dealer. When the dealer goes, it must
+reveal its hand to the players and hit until it has a 17 or higher.
+
+Error checking:
+All of your code should check for erroneous values passed in. Any time the
+user enters something erroneous (like a negative bet value) reprompt them
+until they enter something correct. (Check out /public/reprompt.cc for example
+code on how to do this.) Any time your code passes in something bad to your
+own code, print an error message and kill the program. I recommend using
+asserts to do this (#include <cassert>) but you can also write a die()
+function to do the same thing. For example, if your deck code tries making a
+card that has a face value of 15, then the card class constructor should
+detect this, and kill the program.
+
+Makefiles:
+If you like, you can do separate compilation for this project, and write a
+Makefile to build the project for you automatically. If not, you can just have
+main.cc #include the header files and just compile main.cc, or you can just
+put all the classes and everything into main.cc (unity build). The choice is
+yours.

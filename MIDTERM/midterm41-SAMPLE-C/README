@@ -1,0 +1,29 @@
+This is a program that will find and replace a word from a series of sentences
+
+The first phase is to input a series of sentences:
+--------------------------------------------------
+Please insert sentences. (Type 'quit' to quit.)
+Hello, my name is Mason Tjuanta
+Dank Meme can't melt steel beams
+Join house Lannister
+quit
+--------------------------------------------------
+The second phase is to input a series of words to find and replace - the first
+word is the one we will search for, the second is the word to replace.
+The first line will do a search and replace on the first line entered.
+The second line, applies to the second line entered above, and so forth.
+--------------------------------------------------
+Enter pairs of words to search and replace, which will apply to one sentence
+in a row. Type 'quit' to quit.
+name pet
+Meme Memes
+house House
+quit
+--------------------------------------------------
+At the end, it prints out what the final strings are:
+--------------------------------------------------
+The final set of strings is:
+Hello, my pet is Mason Tjuanta
+Dank Memes can't melt steel beams
+Join House Lannister
+

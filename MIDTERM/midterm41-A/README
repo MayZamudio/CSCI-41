@@ -1,0 +1,68 @@
+=====================================
+ ______        ___  _____ ____ _   _ 
+/ ___\ \      / / \|_   _/ ___| | | |
+\___ \\ \ /\ / / _ \ | || |   | |_| |
+ ___) |\ V  V / ___ \| || |___|  _  |
+|____/  \_/\_/_/   \_\_| \____|_| |_|
+                                     
+=====================================
+
+This is a simple program that uses a custom Class to generate random colors
+(colors are represented by Red, Green, and Blue and range from 0 to 255). The
+system can mix colors together (adding their components) or can sort a vector
+of colors in one of three ways (by red, by green, or by blue). The system uses
+this to identify the most and least red and green and blue colors out of the
+10 colors randomly generated.
+
+The system uses a random seed to generate the colors. That part works fine -
+don't mess with it or it'll break the autograder.
+
+Sample Run:
+Welcome to the Color Swatch 2000(tm) color generation system
+Testing the color mixing system now:
+x: (30,0,50)
+y: (50,50,50)
+x+y: (80,50,100)
+Please enter a random seed:
+0
+Color Swatch 0: (103,198,105)
+Color Swatch 1: (115,81,255)
+Color Swatch 2: (74,236,41)
+Color Swatch 3: (205,186,171)
+Color Swatch 4: (242,251,227)
+Color Swatch 5: (70,124,194)
+Color Swatch 6: (84,248,27)
+Color Swatch 7: (232,231,141)
+Color Swatch 8: (118,90,46)
+Color Swatch 9: (99,51,159)
+The least red swatch: (70,124,194)
+The most red swatch: (242,251,227)
+The least green swatch: (99,51,159)
+The most green swatch: (242,251,227)
+The least blue swatch: (84,248,27)
+The most blue swatch: (115,81,255)
+
+Sample Run 2:
+Welcome to the Color Swatch 2000(tm) color generation system
+Testing the color mixing system now:
+x: (30,0,50)
+y: (50,50,50)
+x+y: (80,50,100)
+Please enter a random seed:
+100
+Color Swatch 0: (184,133,119)
+Color Swatch 1: (252,64,183)
+Color Swatch 2: (81,86,181)
+Color Swatch 3: (227,84,52)
+Color Swatch 4: (253,19,178)
+Color Swatch 5: (173,68,194)
+Color Swatch 6: (86,151,206)
+Color Swatch 7: (109,84,255)
+Color Swatch 8: (210,13,75)
+Color Swatch 9: (17,67,220)
+The least red swatch: (17,67,220)
+The most red swatch: (253,19,178)
+The least green swatch: (210,13,75)
+The most green swatch: (86,151,206)
+The least blue swatch: (227,84,52)
+The most blue swatch: (109,84,255)

@@ -1,0 +1,11 @@
+:vsplit ~/dir/filename
+ctrl-w then arrow key to go between windows
+:w to save
+:q to quit
+:wq to save and quit
+
+ctrl-z to send vim to background
+fg to bring back last program sent to background
+
+make && a
+!m

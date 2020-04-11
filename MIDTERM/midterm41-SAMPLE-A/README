@@ -1,0 +1,24 @@
+This is a simple program. The user will be prompted to enter 0s and 1s. He or
+she will do so all in one long block, like this: 001110011
+
+The program will store the bits in a linked list.
+
+You can hit return or enter a non-binary number to stop data entry.
+
+The program will then output the total number of bits read, and the total
+number of 1s read and the total number of zeroes.
+
+Sample input and output:
+
+Insert a series of 1s and 0s (anything else to quit): 111000
+You entered 6 bits, of which 3 were ones and 3 were zeroes.
+
+Insert a series of 1s and 0s (anything else to quit): 01110001101101
+You entered 14 bits, of which 8 were ones and 6 were zeroes.
+
+Insert a series of 1s and 0s (anything else to quit): 11AB00
+You entered 2 bits, of which 2 were ones and 0 were zeroes.
+
+Insert a series of 1s and 0s (anything else to quit):
+You entered 0 bits, of which 0 were ones and 0 were zeroes.
+

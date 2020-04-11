@@ -1,0 +1,60 @@
+===============================
+ _____ ____  _____ _____ ____  
+|_   _|  _ \| ____| ____/ ___| 
+  | | | |_) |  _| |  _| \___ \ 
+  | | |  _ <| |___| |___ ___) |
+  |_| |_| \_\_____|_____|____/ 
+                               
+===============================
+
+Purpose: To teach you guys about BSTs, especially debugging them.
+
+This code builds two templated BSTs, one for ints, one for strings.
+
+It inserts into them, and outputs the sorted results.
+
+Rules:
+1) Duplicates are discarded.
+2) If the tree is empty, it will print "Tree Empty."
+3) THE TREE SHOULD BE SORTED FROM SMALLEST TO LARGEST.
+4) You should have no memory leaks in your code.
+
+--------------------------------------------------------------------
+
+Sample Run 1:
+Please type in ints to sort (0 to quit):
+5
+10
+-10
+-20
+0
+-20
+-10
+5
+10
+Please type in names to sort ("DONE" to quit):
+Bob
+Alice
+Cooper
+DONE
+Alice
+Bob
+Cooper
+
+--------------------------------------------------------------------
+
+Sample Run 2:
+Please type in ints to sort (0 to quit):
+0
+Tree Empty.
+Please type in names to sort ("DONE" to quit):
+Yakama
+yoohoo
+Yeet
+YOLO
+DONE
+YOLO
+Yakama
+Yeet
+yoohoo
+

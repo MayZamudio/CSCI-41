@@ -1,0 +1,67 @@
+=======================================================
+  ____ ___  _   _ _____ ____  _____     _______ ____  
+ / ___/ _ \| \ | |_   _|  _ \|_ _\ \   / / ____|  _ \ 
+| |  | | | |  \| | | | | |_) || | \ \ / /|  _| | | | |
+| |__| |_| | |\  | | | |  _ < | |  \ V / | |___| |_| |
+ \____\___/|_| \_| |_| |_| \_\___|  \_/  |_____|____/ 
+                                                      
+=======================================================
+
+Some people think BRIDGES is hard to use. This code will show you how easy it
+is to make a singly linked list in BRIDGES and visualize it on their web site.
+
+The notion is that we're dealing cards from a deck in a Blackjack sort of
+game, and we want to visualize our hand (held in a linked list), so we use
+BRIDGES to do it.
+
+We also calculate the point total of our hand.
+
+Be sure to put in your BRIDGES credentials if you want to view the linked list
+we build.
+
+Use "make" to build the project. Admire the master Makefile after the
+midterm is over. If you get a lot of error messages, remember you can use
+'more' to show one page of errors at a time, like this:
+make |& more
+
+Sample run:
+Welcome to a contrived blackjack thing designed to show you how easy BRIDGES is to use.
+Pick a random seed:
+7
+How many cards do you want to draw and add up?
+5
+Drew: Ten of Spades
+Drew: Jack of Clubs
+Drew: Five of Clubs
+Drew: Ace of Spades
+Drew: Two of Spades
+Total value: 38
+Success: Assignment posted to the server.
+Check out your visualization at:
+
+http://bridges-cs.herokuapp.com/assignments/...
+
+(Your URL will be different than mine. That's ok, the autograder ignores it.)
+
+Sample Run 2:
+Welcome to a contrived blackjack thing designed to show you how easy BRIDGES is to use.
+Pick a random seed:
+42
+How many cards do you want to draw and add up?
+10
+Drew: Five of Hearts
+Drew: Ace of Clubs
+Drew: Eight of Diamonds
+Drew: Queen of Diamonds
+Drew: Six of Hearts
+Drew: King of Hearts
+Drew: Queen of Spades
+Drew: Nine of Diamonds
+Drew: Seven of Hearts
+Drew: Two of Clubs
+Total value: 78
+Success: Assignment posted to the server.
+Check out your visualization at:
+
+http://bridges-cs.herokuapp.com/assignments/...
+

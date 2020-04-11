@@ -1,0 +1,77 @@
+This program is a simple calculator to compute the average score of your
+favorite baseball team.
+
+The user will first enter how many games were played (which has to be an
+unsigned integer - playing -54 games makes literally no sense). If the user
+typed in a number below 1 or over 100 or anything invalid, it quits. 
+
+The program will then input that many unsigned integers, corresponding to the
+score in each game. The minimum score is 0, the maximum score is 100.
+
+The program will then compute the average score by adding up all the scores
+into a double and then dividing by the number of games played.
+
+Sample runs:
+
+-----
+
+How many games did your team play?
+12
+Please enter the score your team got in each game.
+1
+2
+3
+4
+5
+10
+9
+9
+9
+9
+9
+9
+Your average score was: 6.58333
+
+-----
+
+Welcome to the Baseball Score Calculator.
+How many games did your team play?
+5
+Please enter the score your team got in each game.
+5
+5
+5
+5
+100
+Your average score was: 24
+
+-----
+
+Welcome to the Baseball Score Calculator.
+How many games did your team play?
+3
+Please enter the score your team got in each game.
+1
+16
+56
+Your average score was: 24.3333
+
+Welcome to the Baseball Score Calculator.
+How many games did your team play?
+0
+BAD INPUT!
+
+-----
+
+Welcome to the Baseball Score Calculator.
+How many games did your team play?
+12
+Please enter the score your team got in each game.
+1
+2
+3
+4
+5
+1000
+BAD INPUT!
+

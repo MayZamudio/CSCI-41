@@ -1,0 +1,63 @@
+=========================================
+ ____  ____  ___ ____   ____ _____ ____  
+| __ )|  _ \|_ _|  _ \ / ___| ____/ ___| 
+|  _ \| |_) || || | | | |  _|  _| \___ \ 
+| |_) |  _ < | || |_| | |_| | |___ ___) |
+|____/|_| \_\___|____/ \____|_____|____/ 
+                                         
+=========================================
+
+For this assignment, we will be using a tool called BRIDGES developed by
+Kalpathi Subramanian at UNC Charlotte.
+
+It comes with a bunch of data structures that are already written, and has
+tools for visualizing those data structures.
+
+Main web site: http://bridgesuncc.github.io/
+Tutorials: http://bridgesuncc.github.io/Hello_World_Tutorials/Overview.html
+Original Paper: https://kosara.net/papers/2016/Burlinson-SIGCSE-2016.pdf
+
+1) STEP 1 - You need to register on their web site (see link above). This will
+give you a username and API key (which works like a password.
+
+2) STEP 2 - Open up one of the demo source code files in this local directory,
+and replace YOUR_USERNAME and YOUR_API_KEY with the username and API key you
+got from the website.
+
+3) Compile. It needs the curl library linked in, so to compile it manually you
+need to type (example is using circ_dllist.cc):
+g++ circ_dllist.cc -lcurl
+
+**I would recommend making a Makefile instead to automate your builds**
+
+4) Run (type "a.out")
+
+If you get a message saying you need to enter your name and API key, that
+means you need to enter your name and API key (see step 2). You can't run this
+code until you've registered on their web site and gotten a username and API
+key.
+
+5) Go onto the website and log in here:
+http://bridges-cs.herokuapp.com/login
+
+Each project has a different project number (it's located before YOUR_USERNAME
+and YOU_API_KEY). This separates out the projects on the web site. Click on
+the project number and it will show you the visualization for that project.
+
+Pretty sweet, isn't it?
+
+======
+
+When you're ready to experiment on your own, pick a data structure of theirs
+you want to play with, a list of which is here:
+http://bridgesuncc.github.io/doc/cxx-api/current/html/annotated.html
+
+Then call this line at the top:
+Bridges *bridges =  new Bridges(222, "YOUR_USERNAME", "YOUR_API_KEY");
+(Replace 222 with whatever project number you want to use)
+
+And then at the end:
+bridges->setDataStructure(arr);
+bridges->visualize();
+(Replace arr with whatever BRIDGES data structure you want to visualize.)
+
