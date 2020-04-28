@@ -1,0 +1,52 @@
+ ___ __  __    _    ____ ___ _   _ _____ 
+|_ _|  \/  |  / \  / ___|_ _| \ | | ____|
+ | || |\/| | / _ \| |  _ | ||  \| |  _|  
+ | || |  | |/ ___ \ |_| || || |\  | |___ 
+|___|_|  |_/_/   \_\____|___|_| \_|_____|
+                                         
+ _   _  ___  __  __ _______        _____  ____  _  __
+| | | |/ _ \|  \/  | ____\ \      / / _ \|  _ \| |/ /
+| |_| | | | | |\/| |  _|  \ \ /\ / / | | | |_) | ' / 
+|  _  | |_| | |  | | |___  \ V  V /| |_| |  _ <| . \ 
+|_| |_|\___/|_|  |_|_____|  \_/\_/  \___/|_| \_\_|\_\
+                                                     
+
+This assignment will teach you proper class design. Making ADTs, writing
+constructors, overloading operators, separate header and implementation files,
+etc.
+
+This assignment is a reprise of an early CSCI 40 assignment called "simple
+calculator". Whereas for that assignment you had to do addition, subtraction,
+multiplication, division, and modulus, for this assignment you only have to do
+addition, subtraction, multiplication, and exponentiation.
+
+However, for this assignment, you will be doing complex math.
+
+When your code works right, you'll enter a line like this:
+1 1 + 2 3
+
+This means, 1+1i + 2+3i
+
+So your code will output:
+3+4i
+
+To implement this assignment, you must:
+
+1) Implement a class to handle imaginary numbers. Overload operators for +, -,
+*, etc. in it. Imaginary numbers work kinda like ints, except when you multiply
+two imaginary numbers together you get an int (and a negative int at that)
+rather than another imaginary. Look inside imagine.cc to see what functions
+you need to write.
+
+2) Implement a class to handle complex numbers. A complex number is a
+combination of an int and an imaginary number (so your complex class should
+include the imaginary class). You must overload various operators for it as
+well. Complex.cc has a list of all the functions you must write. They are just
+stubs right now. Multiplication is probably the most complicated, but remember
+FOIL from algebra, and you can use the overloads for the imaginary class to
+make it simple.
+
+You must handle all I/O for these classes as well, with main controlling
+everything. If an error occurs in input, you must output -1 and quit.
+
+When the user inputs 0 0, this means the program is over and you must quit. 
