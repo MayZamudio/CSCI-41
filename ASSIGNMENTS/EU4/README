@@ -1,0 +1,122 @@
+======================================
+   _____ _   _ _  _        _    ___
+  | ____| | | | || |      / \  |_ _|
+  |  _| | | | | || |_    / _ \  | |
+  | |___| |_| |__   _|  / ___ \ | |
+  |_____|\___/   |_|   /_/   \_\___|
+
+======================================
+
+Purpose:
+Your goal for this assignment is to write part of an AI for a hypothetical
+video game called EU4. This assignment is not to make a game itself, which is
+outside the scope of this class, but to control an AI (computer) player in a game.
+
+In the video game, your country will be surrounded by provinces that you can
+add to your empire through either military or diplomatic means.
+
+To this end, your country will have two resources that you will have to track:
+1) Soldiers
+2) Diplomacy Points
+These are both ints, and will be held in main.
+
+Part I - LL Node class
+
+The AI will use these resources to conquer nearby provinces. Nearby provinces
+have two things you need to keep track of:
+1) A name (a string)
+2) A cost (an int representing how expensive it will be to take)
+
+You will need to make a linked list node class (called LL, in the file ll.h)
+that has these two variables in their private section, as well as 
+pointers to the previous and next members of the list they will be in. You
+must make a fully ADTed class, with constructors, get/set methods, etc.
+
+You'll have to replace the placeholder code in the class definition to make it
+work.
+
+When your node class is done, run the program and select option 1 ("Test
+your Linked List Node class"). It will test your class. If you did something
+wrong, it will tell you what you did wrong (hopefully accurately). If you pass
+all tests, then you are ready for Part II.
+
+Part II - List Class
+
+These nodes will be held in two lists:
+1) One list for provinces that can be taken by soldiers
+2) One list for provinces that can be annexed diplomatically
+These lists are both empty by default. The user will add provinces to these
+lists.
+
+You will write a List class (also in ll.h) that will maintain pointers to the
+head and the tail of the list, as well as the size (number of provinces in the
+list). Fully ADT your list class, with get/set methods, constructors, etc.
+
+You will also implement functions that will do the following:
+1) Insert at the beginning (head) of the list
+2) Insert at the end (tail) of the list
+These functions both return a string "X inserted" where X is the name of the province.
+
+Example:
+If the user inserts at the end a province called "Moscow" with a cost of 30, these
+functions will return a string containing "Moscow inserted". If the user
+then inserts at the head "Paris" with a cost of 20, then "Kuala Lumpur" with a
+cost of 10 at the end, and then "New York" with a cost of 10 at the end, your
+list will look like:
+Paris, Cost 20
+Moscow, Cost 30
+Kuala Lumpur, Cost 10
+New York, Cost 10
+
+3) Delete. Delete will take a cost value, and it will delete the first
+province that has that cost or less, and then return (into the second parameter 
+that is call by reference) the change left over. You will delete the first (starting
+at the head, heading towards the tail) province that matches, not all of them.
+You will return a string containing "X deleted" where X is the name of the
+province.
+
+Example - your list contains:
+Paris, Cost 20
+Moscow, Cost 30
+Kuala Lumpur, Cost 10
+New York, Cost 10
+
+If you are told to delete with a budget of 15, it will skip Paris and Moscow,
+because their cost is too high, and then delete Kuala Lumpur, and return a string
+saying "Kuala Lumpur deleted" and amount_out will be set to 5. The list will
+now look like:
+Paris, Cost 20
+Moscow, Cost 30
+New York, Cost 10
+
+When your class is ready to test, run the program and select option 2.
+Assuming you pass all tests, you are ready for Part III.
+
+Part III - Main 
+
+Most of this is done for you already. All the i/o, updating the soldier and
+diplomacy power stuff, etc. You will merely need to write the code that will
+put data into the two linked lists. When the user chooses to insert a "high
+priority" province that means to put it at the head of the list (since the
+head gets processed first). Inserting a regular province adds at the end, so
+if you do all provinces this way they will be held in the order they were
+inserted. 
+
+You will need to write code to:
+1) Make a function call to insert at the front of the invasion list
+2) Make a function call to insert at the end of the invasion list
+3) Make a function call to insert at the front of the annex list
+4) Make a function call to insert at the end of the annex list
+5) Make a function call to delete from the invasion list, passing in the
+current number of soldiers you have, and then using the write parameter passed
+back to update your soldiers count. This will delete one province, max.
+6) Make a function call to delete from the annex list, but ANNEXATION WORKS DIFFERENTLY.
+You will continue to annex provinces until there are no provinces left to
+annex with your current budget. This is the only bit of Part III that might
+even be a little tricky. The rest are simple.
+
+
+Extra credit:
+If the same province is available for conquest via both means (i.e. the same
+name appears on both lists, after taking it one way remove it off the other
+list for no cost). 
