@@ -1,0 +1,31 @@
+===================
+ ____  ____  _   _ 
+|  _ \|  _ \| \ | |
+| |_) | |_) |  \| |
+|  _ <|  __/| |\  |
+|_| \_\_|   |_| \_|
+                
+===================
+
+You have to write a program that does an RPN calculator.
+
+2 3 + 4 * is the same thing as (2+3)*4
+
+Rules:
+
+1) Every time you read an int in from cin, it gets pushed on a stack of ints.
+
+2) Every time you read an operation in from cin, it will pop off two elements
+from the stack, do the computation, and push the result back. You must
+support the following operations: +,-,*,/,%,^
+
+3) If they type "E", then if and only if the stack has exactly ONE element on
+it, print the value on the stack, otherwise die.
+
+4) You must do error checking - if the stack gets emptied out by an operation,
+die. If they type E with the size of the stack not equal to one, die. If they
+don't type E ever, then die. (I.e. all input must have at least one E in it.)
+
+To die, print "BAD INPUT!" and quit. The die() function is written for you.
+
+Note: You can use either the standard library stack class or write your own.
