@@ -1,0 +1,54 @@
+  ___  _   _ _____ _   _ _____ 
+ / _ \| | | | ____| | | | ____|
+| | | | | | |  _| | | | |  _|  
+| |_| | |_| | |___| |_| | |___ 
+ \__\_\\___/|_____|\___/|_____|
+                               
+
+For this assignment, you will need to implement a queue class three different
+ways. Options include:
+1) Using the list<> class from the STL (or forward_list)
+2) Using the vector<> class (what will this do to performance?)
+3) Writing a circular array
+4) Writing your own linked list class (you can borrow from an earlier assignment if you want)
+5) Writing it yourself some other way
+
+You can use the standard library to implement two of the modes, write the
+third mode yourself.
+
+When the class is instantiated in main, it will tell the Queue class which
+mode it should run in using the constructor. It should default to running in
+the mode you wrote yourself, without using the standard library.
+
+You need to implement each of these functions for each mode:
+1) Search
+2) Remove
+3) Push
+4) Pop
+5) Print
+
+The above is worth 5 points.
+
+The second five points are for doing a report that benchmarks the three modes.
+
+You will be running your program A LOT and generating A LOT of data.
+Specifically, you will run your code:
+1) Once for each mode (linked list, circular array, vector) x
+2) Once for each of 10 sizes (10,000 to 100,000 in increments of 10k) x
+3) Once for each of the following four operations: push/pop, push/search, push/remove,
+	and a combined all operations that is a mix of push/pop/search/remove. x
+4) Run five times each so that individual variations in time can be smooted
+out. You will average the value for the five runs to smooth out data results. 
+
+Once you have all of your data, put it into Excel, and graph the results. The
+X axis will be the run size (10k, 20k, etc.) and the Y axis must be time. You
+will show the running time for each of the operations for each of the modes.
+You can do them all on different graphs, or graph them together however you
+like.
+
+You will then write a 1 to 2 page paper (turned in on Canvas) including the
+graphs and analyzing the results. You must answer the following questions:
+1) Which mode was fastest at each of the operations?
+2) Which was the easiest to code?
+3) What problems did you encounter in this assignment?
+4) How would you do a queue in the future?
