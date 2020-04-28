@@ -1,0 +1,92 @@
+=========================================================================
+ ___ __  __    _    ____ _____     ____  _____    _    ____   ____ _   _ 
+|_ _|  \/  |  / \  / ___| ____|   / ___|| ____|  / \  |  _ \ / ___| | | |
+ | || |\/| | / _ \| |  _|  _|     \___ \|  _|   / _ \ | |_) | |   | |_| |
+ | || |  | |/ ___ \ |_| | |___     ___) | |___ / ___ \|  _ <| |___|  _  |
+|___|_|  |_/_/   \_\____|_____|   |____/|_____/_/   \_\_| \_\\____|_| |_|
+                                                                         
+
+=========================================================================
+
+Purpose: This assignment will teach you about pointers, classes, data
+structures, and making good tests for yourself.
+
+Location: All of your coding will be done in "you.cc". Don't modify main.cc.
+
+Objective: For this assignment you will implement a simple image recognition library. You
+must scan through an image to find all blue pixels and return the x,y
+coordinate of the center of all of them. 
+
+Consider this image:
+https://tinyurl.com/bluecirc
+
+It has a red square, a purple polygon, and a blue circle. Your program should
+return the x,y coordinates of the center of the circle. x is horizontal, y is
+vertical. 0,0 is the top left corner of the image.
+
+Images are 3D arrays of color data. The x and y coordinates are the x and
+y coordinates of the image. The z axis is color. The first color is red, the
+second green, the third blue. You will be given a 1D array containing color
+data. These are all unsigned chars, with 0 meaning black and 255 meaning full
+color.
+
+Example. Suppose I give you a 3x3 pixel image (this is a very small image!)
+that has a single purple (255 red, 0 green, 255 blue) pixel in the bottom left
+corner. If I was to draw what this array would look like in 3D, it'd be
+something like this:
+
+Red Plane:
+0	0	0
+0	0	0
+255 0	0
+
+Green Plane:
+0	0	0
+0	0	0
+0	0	0
+
+Blue Plane:
+0	0	0
+0	0	0
+255 0	0
+
+But of course it would be too easy to give you a data structure with the data
+organized as all this. All you are going to get is what *I* got when I started
+work on this assignment, which is a pointer to a 1D array holding all of that
+data in order. Read from left to right, like a book, and those numbers above
+look like this:
+0	0	0	0	0	0	255	0	0	0	0	0	0	0	0	0	0	0	0	0
+0	0	0	0	255	0	0
+
+Every three numbers (the width of the image in my example) is a new row. Every
+three times three numbers (the width x the height) is a new color. 
+
+1) You will be given a pointer to the start of this chunk of memory, the
+width, and the height. I recommend making a vector or something to store the
+data in, or write a function to be able to select the color data at a given x
+and y location. 
+
+2) Loop over the image and record the location of every blue pixel. "Blue" means the
+blue value at a pixel is between 236 and 255, and its red and green values at
+that point are both below 20.
+
+I recommend you find very small sample images to test your code on. This is an
+integral part of the "learning to be a programmer" process - finding good
+tests to test your code on. Here's one I found that might be helpful -
+https://tinyurl.com/bluerekt
+
+3) Output to the standard output the (x,y) location of the center of all blue
+pixels in the image, like this: "The center point for blue in this image is:
+(49,49)". If there is no blue at all in the image, print: "No blue found."
+
+Sample run:
+Please enter a URL or file name to load:
+https://tinyurl.com/bluerekt
+Loaded image of size 100x100
+The center point for blue in this image is: (49,49)
+
+Sample run #2:
+https://tinyurl.com/bluecirc
+Loaded image of size 600x600
+The center point for blue in this image is: (465,130)
+
