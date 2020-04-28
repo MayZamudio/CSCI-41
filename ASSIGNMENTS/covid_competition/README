@@ -1,0 +1,424 @@
+=======================================================================
+  ____ _____     _____ ____     ____ ___  _   _ _   _ _____ ____ _____ 
+ / ___/ _ \ \   / /_ _|  _ \   / ___/ _ \| \ | | \ | | ____/ ___|_   _|
+| |  | | | \ \ / / | || | | | | |  | | | |  \| |  \| |  _|| |     | |  
+| |__| |_| |\ V /  | || |_| | | |__| |_| | |\  | |\  | |__| |___  | |  
+ \____\___/  \_/  |___|____/   \____\___/|_| \_|_| \_|_____\____| |_|  
+                                                                       
+=======================================================================
+
+The US Government has tasked you with programming "COVID CONNECT", a program
+that will connect people with businesses that produce the resources they need
+to stay alive, like toilet paper and food. Your company (Covid Connect) has a
+fleet of drones used to make the deliveries, and will make its money that way.
+
+In order to get paid, your program must successfully implement the following
+three functions:
+
+1) The ability to ADD PEOPLE and BUSINESSES to a database. All people and
+businesses have a name (a string of one or more words), and an X and Y
+location (both long longs), and a bank account balance (a long long) in cents.
+
+2) The ability to ADD ITEMS that a business has for sale. Every item to
+purchase has a name (a string, that must be unique) and a price (a long long) in
+cents.
+
+3) The ability for a customer to BUY an item from a business. The
+customer must specify the item to buy, and money equal to the cost is
+transferred from the customer to the business. The customer pays a delivery
+fee equal to the number of miles they are from the business to us (Covid
+Connect), with a minimum fee of $5. Round all floats to the nearest int.
+(Example: a person at (10,10) buys a roll of toilet paper from a business at
+(20,21). This is 14.87 miles away, so we charge $15.)
+
+When the user of the program chooses to QUIT, the program prints some final stats
+and then quits.  It first prints the name and account balance of the richest
+person and the richest business. It then prints how much money Covid Connect
+(your company) has grossed in total.
+
+If an error occurs, print "BAD INPUT!\n" and quit.
+
+Errors:
+1) A person tries to buy something they don't have enough money for.
+2) If a person and/or business is added that has the same name as another one.
+(If a person named Kerney exists, there cannot be another person named Kerney
+but there could be a business named Kerney or an item named Kerney.)
+3) If a business tries to buy something. (I know that in real life business to
+business is a big deal, but we're keeping it simple here.) More generally
+speaking, if the name of the person trying to buy something isn't in the
+database of persons.
+4) If a business tries adding something for sale that has the same name as
+something else for sale. (If you have kimchi for sale, you cannot add kimchi
+for sale again.)
+5) Any negative price or negative starting account balance is an error.
+6) A sale from more than 100 miles away is an error. (100 miles is okay, 101
+miles is an error.)
+7) Entering a choice other than 1 to 5 from the main menu
+
+=====================================================================
+
+Sample Run #1 (demonstrating how it prints the richest user & no business):
+  ____           _     _    ____                            _
+ / ___|_____   _(_) __| |  / ___|___  _ __  _ __   ___  ___| |_
+| |   / _ \ \ / / |/ _` | | |   / _ \| '_ \| '_ \ / _ \/ __| __|
+| |__| (_) \ V /| | (_| | | |__| (_) | | | | | | |  __/ (__| |_
+ \____\___/ \_/ |_|\__,_|  \____\___/|_| |_|_| |_|\___|\___|\__|
+
+Pick a number:
+1. ADD a user
+2. ADD a business
+3. ADD items for sale
+4. BUY an item
+5. QUIT
+1
+Please enter the name of the user to add:
+Bill
+Please enter Bill's location:
+1 1
+Please enter Bill's balance in cents:
+1234
+Pick a number:
+1. ADD a user
+2. ADD a business
+3. ADD items for sale
+4. BUY an item
+5. QUIT
+1
+Please enter the name of the user to add:
+Hazelton
+Please enter Hazelton's location:
+-1 -1
+Please enter Hazelton's balance in cents:
+4321
+Pick a number:
+1. ADD a user
+2. ADD a business
+3. ADD items for sale
+4. BUY an item
+5. QUIT
+1
+Please enter the name of the user to add:
+Muia
+Please enter Muia's location:
+-20 -20
+Please enter Muia's balance in cents:
+42
+Pick a number:
+1. ADD a user
+2. ADD a business
+3. ADD items for sale
+4. BUY an item
+5. QUIT
+5
+Richest Customer and Business:
+Name: Hazelton       Balance: $43.21
+No businesses.
+Total gross income for Covid Connect: $0.00
+
+===========================================================
+
+Sample Run #2 (Showing how purchases work):
+  ____           _     _    ____                            _
+ / ___|_____   _(_) __| |  / ___|___  _ __  _ __   ___  ___| |_
+| |   / _ \ \ / / |/ _` | | |   / _ \| '_ \| '_ \ / _ \/ __| __|
+| |__| (_) \ V /| | (_| | | |__| (_) | | | | | | |  __/ (__| |_
+ \____\___/ \_/ |_|\__,_|  \____\___/|_| |_|_| |_|\___|\___|\__|
+
+Pick a number:
+1. ADD a user
+2. ADD a business
+3. ADD items for sale
+4. BUY an item
+5. QUIT
+1
+Please enter the name of the user to add:
+Bill
+Please enter Bill's location:
+0 0
+Please enter Bill's balance in cents:
+10000
+Pick a number:
+1. ADD a user
+2. ADD a business
+3. ADD items for sale
+4. BUY an item
+5. QUIT
+2
+Please enter the name of the business to add:
+Pokiland
+Please enter Pokiland's location:
+3 4
+Please enter Pokiland's balance in cents:
+0
+Pick a number:
+1. ADD a user
+2. ADD a business
+3. ADD items for sale
+4. BUY an item
+5. QUIT
+3
+Please enter the name of the business to add an item to:
+Pokiland
+Please enter the name of the item to add:
+Pokibowl
+Please enter the price of one Pokibowl in cents
+1000
+Pick a number:
+1. ADD a user
+2. ADD a business
+3. ADD items for sale
+4. BUY an item
+5. QUIT
+4
+Please enter the name of the person who wants to buy an item:
+Bill
+Please enter the name of the business who wants to sell an item:
+Pokiland
+Delivery fee will be: $5.00
+These items are available for purchase:
+Name: Pokibowl       Price: $10.00
+Which item would you like to buy?
+Pokibowl
+Purchased. Bill has $85.00 remaining.
+Pick a number:
+1. ADD a user
+2. ADD a business
+3. ADD items for sale
+4. BUY an item
+5. QUIT
+4
+Please enter the name of the person who wants to buy an item:
+Bill
+Please enter the name of the business who wants to sell an item:
+Pokiland
+Delivery fee will be: $5.00
+These items are available for purchase:
+Name: Pokibowl       Price: $10.00
+Which item would you like to buy?
+Pokibowl
+Purchased. Bill has $70.00 remaining.
+Pick a number:
+1. ADD a user
+2. ADD a business
+3. ADD items for sale
+4. BUY an item
+5. QUIT
+5
+Richest Customer and Business:
+Name: Bill           Balance: $70.00
+Name: Pokiland       Balance: $20.00
+Total gross income for Covid Connect: $10.00
+
+===================================================================
+
+Sample Run #3. Tran and H Wolf live at opposite sides of Fresno, at (10,10) and (-10,-10) respectively. There are two game stores in town, Toys R Us (0,0) and Crazy Squirrel (-10,0). They each buy an item from both stores, and despite both starting with the same amount of money, H Wolf ends up with more due to him living closer to the Squirrel.
+
+  ____           _     _    ____                            _
+ / ___|_____   _(_) __| |  / ___|___  _ __  _ __   ___  ___| |_
+| |   / _ \ \ / / |/ _` | | |   / _ \| '_ \| '_ \ / _ \/ __| __|
+| |__| (_) \ V /| | (_| | | |__| (_) | | | | | | |  __/ (__| |_
+ \____\___/ \_/ |_|\__,_|  \____\___/|_| |_|_| |_|\___|\___|\__|
+
+Pick a number:
+1. ADD a user
+2. ADD a business
+3. ADD items for sale
+4. BUY an item
+5. QUIT
+1
+Please enter the name of the user to add:
+Tran
+Please enter Tran's location:
+10 10
+Please enter Tran's balance in cents:
+50000
+Pick a number:
+1. ADD a user
+2. ADD a business
+3. ADD items for sale
+4. BUY an item
+5. QUIT
+1
+Please enter the name of the user to add:
+H Wolf
+Please enter H Wolf's location:
+-10 -10
+Please enter H Wolf's balance in cents:
+50000
+Pick a number:
+1. ADD a user
+2. ADD a business
+3. ADD items for sale
+4. BUY an item
+5. QUIT
+2
+Please enter the name of the business to add:
+Toys R Us
+Please enter Toys R Us's location:
+0 0
+Please enter Toys R Us's balance in cents:
+0
+Pick a number:
+1. ADD a user
+2. ADD a business
+3. ADD items for sale
+4. BUY an item
+5. QUIT
+3
+Please enter the name of the business to add an item to:
+Toys R Us
+Please enter the name of the item to add:
+Plushie
+Please enter the price of one Plushie in cents
+500
+Pick a number:
+1. ADD a user
+2. ADD a business
+3. ADD items for sale
+4. BUY an item
+5. QUIT
+3
+Please enter the name of the business to add an item to:
+Toys R Us
+Please enter the name of the item to add:
+Nintendo Switch
+Please enter the price of one Nintendo Switch in cents
+20000
+Pick a number:
+1. ADD a user
+2. ADD a business
+3. ADD items for sale
+4. BUY an item
+5. QUIT
+2
+Please enter the name of the business to add:
+Crazy Squirrel
+Please enter Crazy Squirrel's location:
+-10 0
+Please enter Crazy Squirrel's balance in cents:
+0
+Pick a number:
+1. ADD a user
+2. ADD a business
+3. ADD items for sale
+4. BUY an item
+5. QUIT
+3
+Please enter the name of the business to add an item to:
+Crazy Squirrel
+Please enter the name of the item to add:
+Goblin Slayer Kids Coloring Book
+Please enter the price of one Goblin Slayer Kids Coloring Book in cents
+100
+Pick a number:
+1. ADD a user
+2. ADD a business
+3. ADD items for sale
+4. BUY an item
+5. QUIT
+3
+Please enter the name of the business to add an item to:
+Toys R Us
+Please enter the name of the item to add:
+Goblin Slayer Kids Coloring Book
+Please enter the price of one Goblin Slayer Kids Coloring Book in cents
+100
+Pick a number:
+1. ADD a user
+2. ADD a business
+3. ADD items for sale
+4. BUY an item
+5. QUIT
+3
+Please enter the name of the business to add an item to:
+Crazy Squirrel
+Please enter the name of the item to add:
+Tokaido
+Please enter the price of one Tokaido in cents
+6000
+Pick a number:
+1. ADD a user
+2. ADD a business
+3. ADD items for sale
+4. BUY an item
+5. QUIT
+4
+Please enter the name of the person who wants to buy an item:
+H Wolf
+Please enter the name of the business who wants to sell an item:
+Toys R Us
+Delivery fee will be: $14.00
+These items are available for purchase:
+Name: Goblin Slayer Kids Coloring BookPrice: $1.00
+Name: Plushie        Price: $5.00
+Name: Nintendo SwitchPrice: $200.00
+Which item would you like to buy?
+Plushie
+Purchased. H Wolf has $481.00 remaining.
+Pick a number:
+1. ADD a user
+2. ADD a business
+3. ADD items for sale
+4. BUY an item
+5. QUIT
+4
+Please enter the name of the person who wants to buy an item:
+Tran
+Please enter the name of the business who wants to sell an item:
+Toys R Us
+Delivery fee will be: $14.00
+These items are available for purchase:
+Name: Goblin Slayer Kids Coloring BookPrice: $1.00
+Name: Plushie        Price: $5.00
+Name: Nintendo SwitchPrice: $200.00
+Which item would you like to buy?
+Plushie
+Purchased. Tran has $481.00 remaining.
+Pick a number:
+1. ADD a user
+2. ADD a business
+3. ADD items for sale
+4. BUY an item
+5. QUIT
+4
+Please enter the name of the person who wants to buy an item:
+H Wolf
+Please enter the name of the business who wants to sell an item:
+Crazy Squirrel
+Delivery fee will be: $10.00
+These items are available for purchase:
+Name: Tokaido        Price: $60.00
+Name: Goblin Slayer Kids Coloring BookPrice: $1.00
+Which item would you like to buy?
+Goblin Slayer Kids Coloring Book
+Purchased. H Wolf has $470.00 remaining.
+Pick a number:
+1. ADD a user
+2. ADD a business
+3. ADD items for sale
+4. BUY an item
+5. QUIT
+4
+Please enter the name of the person who wants to buy an item:
+Tran
+Please enter the name of the business who wants to sell an item:
+Crazy Squirrel
+Delivery fee will be: $22.00
+These items are available for purchase:
+Name: Tokaido        Price: $60.00
+Name: Goblin Slayer Kids Coloring BookPrice: $1.00
+Which item would you like to buy?
+Goblin Slayer Kids Coloring Book
+Purchased. Tran has $458.00 remaining.
+Pick a number:
+1. ADD a user
+2. ADD a business
+3. ADD items for sale
+4. BUY an item
+5. QUIT
+5
+Richest Customer and Business:
+Name: H Wolf         Balance: $470.00
+Name: Toys R Us      Balance: $10.00
+Total gross income for Covid Connect: $60.00
+
