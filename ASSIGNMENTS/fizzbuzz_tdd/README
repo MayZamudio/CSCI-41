@@ -1,0 +1,39 @@
+=================================================
+ _____ _         ____
+|  ___(_)_______| __ ) _   _ ________
+| |_  | |_  /_  /  _ \| | | |_  /_  /
+|  _| | |/ / / /| |_) | |_| |/ / / /
+|_|   |_/___/___|____/ \__,_/___/___|
+
+=================================================
+
+This is a simple warmup programming assignment designed to get you used to
+doing development here on the server. It will also teach you the TDD
+development method.
+
+You're responsible for writing two functions and testing them:
+fizzbuzz
+fizzbuzz2
+
+Fizzbuzz is a function that will take a number between 1 and 100, and will
+return a string containing one of four values based on which case it is:
+Case 1) "Fizz" if the number passed in is divisible by 3 (for example, 12).
+Case 2) "Buzz" if the number passed in is divisible by 5 (for example, 20).
+Case 3) "Fizzbuzz" if the number passed in is divisible by both 3 and 5 (for example
+30).
+Case 4) "<The number>" otherwise. (for example, passing in 7 will return "7"). This is
+a string, not an int. To convert from an int to a string in C++, use the
+to_string() function. For example, to_string(2) returns "2".
+
+Fizzbuzz2 is exactly the same, but with one additional check.
+Prior to Case 4, you must add the digits of the number together, and apply the
+same checks to the sum. In other words, if you pass in 41, you will return
+"Buzz" because even though 41 isn't divisble by 3 or 5, 4+1 = 5. You will add
+this check after Case 3 and before Case 4.
+
+You must write a series of tests for your code to verify that your code is
+working properly. I recommend starting with the simplest tests possible, and
+writing as little code as possible to answer those tests, and continuing to go
+back and forth until you can't think of anything else to test.
+
+Use "make" to compile this code, rather than trying to compile it manually.
