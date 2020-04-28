@@ -1,0 +1,106 @@
+=================================
+	Bitfields and Inheritance
+=================================
+
+For this assignment you will learn two things:
+1) How to use bitfields
+2) How to do inheritance
+
+Definitions:
+A "bitfield" is a data structure that uses a single int as multiple booleans.
+"Inheritance" is a way of reusing code in a class to make a new class.
+
+There are some minor things you'll learn as well:
+3) How to use macros to generate code from text (super useful stuff)
+4) A refresher on overloading operators
+5) Three different ways of making lots of constants
+6) Exceptions
+
+For this project, you will make an inventory system for a video game that will
+track three things: A) what keys are currently held by the user, B) what the user's
+job is, and C) what weapons the user has on her. This is actual code from the
+world's greatest video game: Custom Team Fortress. (It is a modification of Team
+Fortress in which players can make their own custom classes.)
+
+1) You will first need to implement the += (pick up), -= (drop), and == (query)
+operators for the three bitfields. 
+
+2) You will need to handle all the I/O in this program, so you need to be able
+to parse an input line, do the appropriate bitfield operation, and then maybe
+print something to the screen (only after query commands).
+
+3) It will end on an EOF (end of file), which can be detected by cin becoming
+false after any read.
+
+Sample run:
+
+-----
+
+ADD RED
+ADD WEAP_AXE
+QUERY RED
+(It prints TRUE here.)
+QUERY_WEAP_ROCKET_LAUNCHER
+(It prints FALSE here.)
+DELETE RED
+QUERY RED
+(It prints FALSE here.)
+
+-----
+
+There's a couple special rules you have to implement (which you'll do by
+inheriting from the main bitfield class):
+
+First, when adding a job that is from JOB_THIEF to JOB_PSION (conveniently
+unioned together into JOB_ALL which has all those bits set) you must clear one
+of these jobs if you already have one. Then go ahead and set the flag. If you
+are setting a flag from JOB_ACTIVE to JOB_EXTRA2, these work like normal
+bitfield bits. So don't just set your bitfield to 0 before doing a +=
+operation, it won't work.
+
+In a nutshell, all the main jobs are mutually exclusive to each other. Only
+one can be set.
+
+Second, the weapon class must implement a function that returns an int64 that
+corresponds to the best weapon the player has on hand. This will be the super
+nailgun (WEAP_SNG) if they have it, if not then the Laser Cannon. If not that,
+then the airfist, and so forth, down to WEAP_HOOK in last place.
+
+-----
+
+ERRORS
+
+There's a few different kinds of errors you have to throw (as in, you must
+use exceptions with "throw"):
+
+1) If the user types in a flag that doesn't exist, for example:
+ADD RAINBOW
+The problem outputs:
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Bad parameter to string_to_key: RAINBOW
+Abort
+
+2) If the user asks for the best weapon when you don't have any weapons:
+ADD WEAP_AXE
+DELETE WEAP_AXE
+SELECT BEST WEAPON
+The program outputs:
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Cannot select best weapon when we don't have one!
+Abort
+
+3) If the user tries setting JOB_ALL (which isn't a real job, but just a
+convenient union of all normal job bits together):
+ADD JOB_ALL
+The program outputs:
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Cannot set flag JOB_ALL
+Abort
+
+4) Any other random garbage input
+adhlkjfddshk fdaskljfhdskj fdsfs
+The program outputs:
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Invalid Input
+Abort
+

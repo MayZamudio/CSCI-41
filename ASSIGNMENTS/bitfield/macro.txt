@@ -1,0 +1,22 @@
+/* Use macros in Vim to speed this up!
+mx - make a mark called x
+'x - jump to mark x
+y'x - copy everything to mark x
+v - visual mode (y to yank)
+q - record macro command or stop recording
+qa - begin recording macro a
+@a - play macro a
+@@ - play last macro
+b = beginning of word
+e = end of word
+^ = beginning of line
+$ = end of line
+a = append after (same as i followed by a right arrow)
+d2w = delete two words
+yw = copy one word
+o = open the line below
+O = open the line above
+
+make sure you end the macro by putting the cursor in the same spot on the line below
+*/
+
