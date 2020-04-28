@@ -1,0 +1,104 @@
+=================================================
+           ____  _   _  _____        __
+          / ___|| \ | |/ _ \ \      / /
+          \___ \|  \| | | | \ \ /\ / / 
+           ___) | |\  | |_| |\ V  V /  
+          |____/|_| \_|\___/  \_/\_/   
+                             
+           _____ _    ___ _
+          |  ___/ \  |_ _| |
+          | |_ / _ \  | || |
+          |  _/ ___ \ | || |___
+          |_|/_/   \_\___|_____|
+
+=================================================
+
+Welcome to SNOW FAIL. It is a ski simulator under development. You will use
+TDD development practices to create it.
+
+This is a coding challenge. You may have one (1) partner. Put your partner's
+name at the top of your code so when the cheat checker flags it I can ignore
+it.
+
+You have an hour to complete the following four tasks:
+
+1) Write a function that successfully detects a "standard name". A "standard
+name" follows the following rules:
+A) Exactly two words (I have sample code that counts how many words are passed
+in, using a stringstream).
+B) The first letter of each word must be capitalized ("Bill Kerney"). No other
+letters may be uppercase.
+C) All characters in the name must either be a letter, or a hyphen (-) or an
+apostrophe ('). ("B'ob K" is ok; "Bob K." is not.)
+
+The function returns true if it is a standard name, false otherwise.
+
+2) You will write a Snow class that holds the elevation levels for the
+mountain we are simulating. A fair bit is written for you, but you need to:
+
+A) Finish the constructor so that the SIZExSIZE grid is initialized with random data,
+using the seed passed in to the constructor.
+
+If you initialize it right, the elevation map will look like this:
+ 95  8 78 25 18 77 75 71 47  7
+ 23 73 28 73 44 81 20 38 71 68
+ 68 44 55 81 62 28 12 23 88 66
+ 57 83 27 88 60 45 65 35 69 12
+ 43 92 85 23 17 81 56 38 20 27
+ 58 88 23 65 21 37 93 33 60 82
+  0 70 17 27 58 78 24 23 65 45
+ 87 60 37 72 35  7 54 92 45 26
+ 71  3 14 47 20 87 84 13 21 97
+ 47 21 67 17  0 77 95 76 52 12
+
+X goes from left to right as it goes from 0 to 9
+Y goes from top to bottom as it goes from 0 to 9
+
+B) You will also have to write a function that, given a position on the snow
+field that returns the position of the lowest elevation next to it.
+
+All elevations must be between 0 and 99.
+All (x,y) positions must be between 0 and SIZE-1.
+SIZE defaults to 10, but you shouldn't assume it will always be 10
+
+If a function gets called with bad parameters, throw an out_of_bounds
+exception.
+
+For example, consider the point (in the middle, lets say it is position 5,5)
+which is at elevation 10:
+40 20 60
+40 10 70
+40 5  80
+
+The function should return (5,6), as that is the location of the lowest point
+next to the given point.
+
+Main will call this function four times, and print the route the skier will
+take from the starting location you punch in. It'll notify the user if the
+skier gets stuck in a rut before the end of the four steps.
+
+3) You must write tests for the accept_name() function. I've given you lots of
+examples. You need to write at least five more successful test cases and five
+more unsuccessful test cases. These tests are just one line calls to the
+function and should test if the function returns the value that you expect.
+
+Helpful tip: To run the tester, you must enter "test" as your skier name
+
+4) You must write five successful test cases for the Snow class, and five
+unsuccessful test cases for the Snow class. TRY TO GET FULL COVERAGE over all
+the possibilities, such as bad positions, ties for directions to ski in,
+getting stuck (if the spot you are on is the lowest elevation), and so forth.
+
+When you're read to turn in your code, switch which line is run in the
+Makefile, do a "touch main.cc" and then type "mk" again to rebuild it. That'll
+turn off the testing data that will confuse the autograder.
+
+=================================================
+
+Reference: We are using the Google Test Suite, called "gtest".
+
+You can read more about it here:
+https://github.com/abseil/googletest/blob/master/googletest/docs/primer.md
+
+And here:
+https://www.ibm.com/developerworks/aix/library/au-googletestingframework.html
