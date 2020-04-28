@@ -1,0 +1,38 @@
+======================================================================================================
+ FARKLE RULES
+======================================================================================================
+ ✳️ Farkle is a dice game. 2 players switch turns in this game.
+ ✳️ The first one to reach the game point, WINS!
+ ✳️ You choose the wager amount for MONEY!
+ ✳️ As long as you get a 1 or a 5 dot die, if there are at least three dice
+    with the same number of dots, a sequential straight of all 6 dice, or a
+    "small straight" of 5 sequential dice.
+ ✳️ Players can continue to roll if they use all 6 dice on their turn for points.
+
+ Scoring is as follows:
+   1) A single 1 is worth 100 points.
+   2) A single 5 is worth 50 points.
+   3) Three of a kind is worth 100 points multiplied by the given number,
+        e.g. three 4s are worth 400 points
+   4) Three 1's are worth 1,000 points.
+   5) Four or more of a kind is worth double the points of three of a kind,
+        e.g. so four 4s are worth 800 points, five 4s are worth 1,600 points etc.
+======================================================================================================
+ THE PLAY
+======================================================================================================
+
+   1) A player's turn always begins by throwing all six dice. The player then
+    selects the number to set aside scoring dice, and at least one
+    die must always be set aside. Then the player can throw the remaining
+    dice again using R and the situation repeats. Scoring combinations are
+    counted only for the current throw, not the entire turn.
+
+   2) If a throw does not produce a single scoring die, then the player's
+    turn is over and all points scored up to that throw are forfeit and
+    money is not earned.
+
+======================================================================================================
+ GOOD LUCK! ❇️
+======================================================================================================
+
+ ....loading your game
