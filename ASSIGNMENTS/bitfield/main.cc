@@ -62,31 +62,6 @@ const int JOB_BLOODY_KNIFE = 16384;
 const int JOB_EXTRA1 =		65536;
 const int JOB_EXTRA2 =		131072;
 
-string job_to_string(int64_t flag) {
-	if (flag == JOB_ALL) return "JOB_ALL";
-	if (flag == JOB_ARMY) return "JOB_ARMY";
-	if (flag == JOB_ACTIVE) return "JOB_ACTIVE";
-	if (flag == JOB_BERSERKER) return "JOB_BERSERKER";
-	if (flag == JOB_BLOODY_KNIFE) return "JOB_BLOODY_KNIFE";
-	if (flag == JOB_CHAPLAN) return "JOB_CHAPLAN";
-	if (flag == JOB_CRUSADER) return "JOB_CRUSADER";
-	if (flag == JOB_GUERILLA) return "JOB_GUERILLA";
-	if (flag == JOB_HACKER) return "JOB_HACKER";
-	if (flag == JOB_JUDOKA) return "JOB_JUDOKA";
-	if (flag == JOB_MARTYR) return "JOB_MARTYR";
-	if (flag == JOB_PSION) return "JOB_PSION";
-	if (flag == JOB_RUNNER) return "JOB_RUNNER";
-	if (flag == JOB_WARLOCK) return "JOB_WARLOCK";
-	if (flag == JOB_EXTRA1) return "JOB_EXTRA1";
-	if (flag == JOB_EXTRA2) return "JOB_EXTRA2";
-	if (flag == JOB_FULL_HIDE) return "JOB_FULL_HIDE";
-	if (flag == JOB_TIRED) return "JOB_TIRED";
-	if (flag == JOB_THIEF) return "JOB_THIEF";
-	if (flag == JOB_TKD) return "JOB_TKD";
-	throw runtime_error("Bad job to string passed");
-}
-
-
 int64_t string_to_job(string s) {
 	if (s == "JOB_ALL") return JOB_ALL;
 	if (s == "JOB_ARMY") return JOB_ARMY;
@@ -193,6 +168,7 @@ int64_t string_to_weapon(string s) {
 	if (s == "WEAP_AIRFIST") return WEAP_AIRFIST;
 	if (s == "WEAP_LASERCANNON") return WEAP_LASERCANNON;
 	if (s == "WEAP_SNG") return WEAP_SNG;
+	return EXIT_SUCCESS;
 	throw runtime_error("Something bad happened with: int64_t string_to_weapon ");
 }
 typedef int64_t int64; //Here's an example of how to do a typedef
@@ -229,24 +205,25 @@ class Bitfield {
 class Job_Bitfield : public Bitfield {
   public:
 	Job_Bitfield() : Bitfield() {}
-	void operator+= (const int64_t flag) {
-		if (flag == JOB_ALL) throw runtime_error("Cannot set flag JOB_ALL");
-		if (flag & JOB_ALL)
-			datafield &= ~JOB_ALL;
-		datafield |= flag;
-	}
 	//YOU: Override the += operator for this class so that it clears any existing jobs between
 	// JOB_THIEF and JOB_PSION if a new bit in that range is set.
-	//You can use JOB_ALL to quickly test to see if a bit is in that range, and clear all such bits
-	// if you do get a match
-	//The other bits (JOB_ACTIVE through JOB_EXTRA2) should be left alone and can be independently set
-	//JOB_ALL cannot be set by the user. If he tries to, throw a runtime_exception with the string:
-	// "Cannot set flag JOB_ALL"
+	void operator+= (const int64_t flag) {
+		//You can use JOB_ALL to quickly test to see if a bit is in that range, and clear all such bits
+		// if you do get a match
+		if (flag & JOB_ALL)
+			datafield &= ~JOB_ALL;
+		//The other bits (JOB_ACTIVE through JOB_EXTRA2) should be left alone and can be independently set
+		datafield |= flag;
+		//JOB_ALL cannot be set by the user. If he tries to, throw a runtime_exception with the string:
+		// "Cannot set flag JOB_ALL"
+		if (flag == JOB_ALL) throw runtime_error("Cannot set flag JOB_ALL");
+	}
 };
 
 class Weapon_Bitfield : public Bitfield {
   public:
 	Weapon_Bitfield() : Bitfield() {}
+
 	int64_t select_best_weapon() {
 		//YOU: Return the highest bit set
 
@@ -254,12 +231,12 @@ class Weapon_Bitfield : public Bitfield {
 		//Don't bother catching it, we'll let it kill the program
 		if (!datafield)
 			throw runtime_error("Cannot select best weapon when we don't have one!");
+		int64_t uno = 1;
 		for (int64_t i = 63; i >= 0 ; i--) {
-			int64_t x = 1;
-			int64_t flag = x << i;
+			int64_t flag = uno << i;
 			if (datafield & flag) return flag;
 		}
-		throw runtime_error("Logic error!");
+		return EXIT_SUCCESS;
 	}
 };
 
@@ -268,9 +245,10 @@ const int JOBS = 1;
 const int WEAPONS = 2;
 
 int which_flag(string s) {
-	string arg = s.substr(0, 3);
-	if (arg == "WEA") return WEAPONS;
-	if (arg == "JOB") return JOBS;
+	//Takes first letter in string "s" and compares, returns int
+	string second_string = s.substr(0, 1);
+	if (second_string == "W") return WEAPONS;
+	if (second_string == "J") return JOBS;
 	return KEYS;
 }
 
@@ -278,49 +256,46 @@ int main() {
 	Bitfield keys;
 	Job_Bitfield jobs;
 	Weapon_Bitfield weapons;
-
-	while (cin) {
-		string choice;
-		cin >> choice;
-		if (!cin) break;
-		for (auto &c : choice) c = toupper(c);
-		string s;
-		cin >> s;
-		if (!cin) break;
-		for (auto &c : s) c = toupper(c);
-		int flag = which_flag(s);
-		if (choice == "ADD") {
-			if (flag == KEYS) keys += string_to_key(s);
-			else if (flag == JOBS) jobs += string_to_job(s);
-			else if (flag == WEAPONS) weapons += string_to_weapon(s);
-		} else if (choice == "DELETE") {
-			if (flag == KEYS) keys -= string_to_key(s);
-			else if (flag == JOBS) jobs -= string_to_job(s);
-			else if (flag == WEAPONS) weapons -= string_to_weapon(s);
-		} else if (choice == "QUERY") {
-			bool found = false;
-			if (flag == KEYS) found = (keys == string_to_key(s));
-			else if (flag == JOBS) found = (jobs ==  string_to_job(s));
-			else if (flag == WEAPONS) found = (weapons == string_to_weapon(s));
-			if (found) cout << "TRUE\n";
-			else cout << "FALSE\n";
-		} else if (choice == "SELECT") {
-			cin >> s;
-			if (!cin) break;
-			cout << weapon_to_string(weapons.select_best_weapon()) << endl;
-		} else throw runtime_error("Invalid Input");
-	}
-
 	//YOU: Write a main loop that will allow the user to set, clear, and test to see if certain flags are set
 	// within the bitfields declared above. You'll need to keep track of three:
 	//1) keys, which will hold the values from key_colors::red through black.
 	//2) jobs, which will hold the const ints for jobs, with special rules (you can only have one job)
 	//3) weapons, which will allow the user to query what the best weapon he has is.
-
-	//SYNTAX:
-	//"ADD <flagname>" will add the flag to the appropriate bitfield. (Example: "ADD RED" or "ADD WEAP_ROCKET_LAUNCHER" or "ADD JOB_PSION") (JOB_ALL cannot be set by the user)
-	//"DELETE <flagname>" removes the flag from the appropriate bitfield. (Example: "REMOVE ORANGE" will clear the orange flag from the keys bitfield.
-	//"QUERY <flagname>" will cout "TRUE" if the flag is set in the appropriate bitfield, or "FALSE" otherwise. (Example: "ADD JOB_PSION", "QUERY JOB_PSION" will print "TRUE" to the screen.)
-	//"SELECT BEST WEAPON will cout the name of the highest bit set (Example: If the bits for the axe and rocket launcher have been set, it will print to the screen "WEAP_ROCKET_LAUNCHER".)
-	//On an invalid command (i.e. not one of the four possibilities above), throw a runtime_error with the string "Invalid Input", and let it kill the program
+	while (cin) {
+		string first_string;
+		cin >> first_string;
+		if (!cin) break;
+		for (auto &c : first_string) c = toupper(c);
+		string s;
+		cin >> s;
+		if (!cin) break;
+		for (auto &c : s) c = toupper(c);
+		int flag = which_flag(s);
+		//"ADD <flagname>" will add the flag to the appropriate bitfield. (Example: "ADD RED" or "ADD WEAP_ROCKET_LAUNCHER" or "ADD JOB_PSION") (JOB_ALL cannot be set by the user)
+		if (first_string == "ADD") {
+			if (flag == KEYS) keys += string_to_key(s);
+			else if (flag == JOBS) jobs += string_to_job(s);
+			else if (flag == WEAPONS) weapons += string_to_weapon(s);
+			//"DELETE <flagname>" removes the flag from the appropriate bitfield. (Example: "REMOVE ORANGE" will clear the orange flag from the keys bitfield.
+		} else if (first_string == "DELETE") {
+			if (flag == KEYS) keys -= string_to_key(s);
+			else if (flag == JOBS) jobs -= string_to_job(s);
+			else if (flag == WEAPONS) weapons -= string_to_weapon(s);
+			//"QUERY <flagname>" will cout "TRUE" if the flag is set in the appropriate bitfield, or "FALSE" otherwise. (Example: "ADD JOB_PSION", "QUERY JOB_PSION" will print "TRUE" to the screen.)
+		} else if (first_string == "QUERY") {
+			bool found_flag = false;
+			if (flag == KEYS) found_flag = (keys == string_to_key(s));
+			else if (flag == JOBS) found_flag = (jobs ==  string_to_job(s));
+			else if (flag == WEAPONS) found_flag = (weapons == string_to_weapon(s));
+			if (found_flag) cout << "TRUE\n";
+			else cout << "FALSE\n";
+			//"SELECT BEST WEAPON will cout the name of the highest bit set (Example: If the bits for the axe and rocket launcher have been set, it will print to the screen "WEAP_ROCKET_LAUNCHER".)
+			//On an invalid command (i.e. not one of the four possibilities above), throw a runtime_error with the string "Invalid Input", and let it kill the program
+		} else if (first_string == "SELECT") {
+			cin >> s;
+			if (!cin) break;
+			cout << weapon_to_string(weapons.select_best_weapon()) << endl;
+		} else throw runtime_error("Invalid Input");
+	}
+	return EXIT_SUCCESS;
 }
