@@ -1,0 +1,25 @@
+=================================================
+ _   _    _    __  __ _     _____ _____   ____  
+| | | |  / \  |  \/  | |   | ____|_   _| |___ \ 
+| |_| | / _ \ | |\/| | |   |  _|   | |     __) |
+|  _  |/ ___ \| |  | | |___| |___  | |    / __/ 
+|_| |_/_/   \_\_|  |_|_____|_____| |_|   |_____|
+                                                
+=================================================
+
+Do the same as the last one except make a heap and insert / pop off of that
+instead of using a vector.
+
+You have to make a templated Heap class, you can't use priority_queue, that
+would be too easy. The class must have at least two functions:
+1. Push
+2. Pop
+
+You can/should use a vector as the backing store for the Heap class.
+
+There's four lines of code you need to change from the old one to make it use
+a heap instead of vector:
+1) Change vector to Heap
+2) Call heap::push instead of vector::push_back
+3) No need to call sort any more because you're a super cool heap
+4) Call heap::pop instead of vector.at(i) to copy into the BRIDGES Array1D
