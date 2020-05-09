@@ -1,0 +1,59 @@
+=====================
+ ____ ____  _  _   _ 
+| __ ) ___|| || | / |
+|  _ \___ \| || |_| |
+| |_) |__) |__   _| |
+|____/____/   |_| |_|
+                     
+=====================
+
+Purpose: To teach you about writing networked code and NCURSES.
+
+Partners: This is an open ended, partnered assignment. You can have one
+person do the server, one do the client, or split it up however you want.
+
+Use the code in ~/network_demo as a basis for this code. Or not. It's your
+life.
+
+5 bullet points to get an A. Each bullet point you do is a letter grade.
+
+1) You have a server that allows exactly two clients to connect. The server
+must take the commands from a client, making sure that a client can't move
+twice in a row. 
+
+2) You have a client that will display your local ships and what you know of
+the enemy (water, hits, misses). It must talk to the server to send where it
+is shooting torpedos, and receive from the server where the enemy is shooting
+and reply with HIT or MISS. (Don't cheat.)
+
+3) Use NCURSES to display both screens. 10x10 grids. Use letters for columns
+and numbers for rows. Here's a good book on NCURSES a student told me about:
+https://nasciiboy.land/book4all/pg2ncurses/pg2ncurses.html#sec-5-2-4
+
+4) Implement the game of battleship. There is a setup phase in which you place
+your ships on a 2D grid. Then there is a phase where you send a Row and Column
+to your opponent (using the server) and they will respond with HIT or MISS.
+Rules: https://en.wikipedia.org/wiki/Battleship_(game)
+
+5) Detect the end of the game. Print a win message using figlet. Reset the
+world so you can either play again or quit.
+
+EXTRA CREDIT: Each one of these is an extra letter grade. 
+
+EC1) BATTLESLOOP BATTLE ROYAL. Allow up to 100 players in the same game.
+
+EC2) Allow ships to move around and shoot. You might need to have some sort of
+fog of war / radar system if you let them move so the game isn't stupid.
+
+EC3) Mouse support. The client already has mouse support turned on in NCURSES,
+but it currently doesn't do anything more than read the row and column clicked
+on.
+
+EC4) Implement Battlestar Galactica or Cosmic Encounter instead of Battleship.
+**This is two extra letter grades.**
+https://en.wikipedia.org/wiki/Battlestar_Galactica:_The_Board_Game
+Rules: https://images-cdn.fantasyflightgames.com/filer_public/0c/0c/0c0cc32c-6394-448c-b5c0-9307f85dfc74/bsg_rulebook_web.pdf
+or Cosmic Encounter
+Rules: https://images-cdn.fantasyflightgames.com/ffg_content/Cosmic%20Encounter/cosmic-encounter-rulebook.pdf
+
+
