@@ -1,0 +1,56 @@
+==================================================================
+     _   ___     ___      ____  ____  ___ ____   ____ _____ ____  
+    | | / \ \   / / \    | __ )|  _ \|_ _|  _ \ / ___| ____/ ___| 
+ _  | |/ _ \ \ / / _ \   |  _ \| |_) || || | | | |  _|  _| \___ \ 
+| |_| / ___ \ V / ___ \  | |_) |  _ < | || |_| | |_| | |___ ___) |
+ \___/_/   \_\_/_/   \_\ |____/|_| \_\___|____/ \____|_____|____/ 
+                                                                  
+==================================================================
+
+This assignment will teach you Java, as well as graph traversal, as well as using a
+linked-list hash table.
+
+To set up this project, you will need to edit your ~/.cshrc file, and put this
+line somewhere in it, after it sets up your PATH variables.
+
+setenv CLASSPATH /public/bridges-java-2.4.1.jar:$PATH
+																  
+There is an alias to vim your .cshrc file, called "vc":
+Then you need to type "source ~/.cshrc" to update it (the first time, after
+that it'll be updated every time you log in). Or you can type the alias for
+that, which is, of course, "sc".
+
+The Bacon distance of an actor is how far away an actor is from Kevin Bacon.
+In other words, a person who worked with Kevin Bacon in a movie has a Bacon
+distance of 1. A person who worked with that person would have a distance
+of 2, etc.
+
+We will compute this for this assignment, except the user can choose any 
+actor to compute the distance to other actors for, not just Kevin Bacon.
+
+1) You will print the list of all actors in the IMDB database (already done)
+2) The user will select which actor that they want to start with (done)
+3) That actor gets added to the processed queue with a distance of 0, and
+then it adds all movies that actor was in, with a distance of 1, to a list of
+all movies that need to be processed (also done).
+4) You will then do basically the same thing over and over, until all actors
+and movies are processed. In other words, you will go through the list of all
+movies that need to be processed, and add all actors in those movies to the
+list of all actors that need to be processed. You then go through the list of
+all actors that need to be processed, and add all their movies to the list of
+movies that need to be processed, etc.
+5) What stops you from going into an infinite loop is that before you add a
+movie or actor to the list of movies or actors to be processed you must check
+to see if they've been processed before, or if they're already on the list to
+be processed. If that's the case, don't add them to the list. After you
+process an actor or movie, add it to the processed list so it doesn't get
+revisited.
+6) You will need to color the nodes in the graph based on their distance from
+the starting node in the graph. Distance 1 is red, distance 2 is orange, etc.
+There is a function at the top of the file that converts between distance and
+color for you.
+7) This will get visualized on BRIDGES, so make sure to enter your API key. As
+you develop your code, you will be able to see what it looks like on the web
+site for BRIDGES.
+
+GL;HF!

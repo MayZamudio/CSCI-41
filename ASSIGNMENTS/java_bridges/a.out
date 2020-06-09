@@ -1,0 +1,4 @@
+#!/bin/tcsh
+setenv CLASSPATH /public/bridges-java-2.4.1.jar:$PATH
+java bacon
+
